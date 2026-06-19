@@ -1,6 +1,6 @@
 Flask==3.0.3
-flasgger==0.9.5
 pymongo==4.7.2
+dnspython==2.6.1
 pydantic==2.6.4
 numpy==1.26.4
 pandas==2.2.2
