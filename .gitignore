@@ -2,6 +2,10 @@
 .venv/
 backend/.venv/
 
+# Environment variables (Secrets)
+.env
+.env.*
+!*.example
 # Byte‑code caches
 __pycache__/
 *.pyc

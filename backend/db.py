@@ -1,6 +1,10 @@
 import os
 from pymongo import MongoClient
 from pymongo.collection import Collection
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (if it exists)
+load_dotenv()
 
 # Retrieve the connection URI from the environment. Fallback to localhost if not set.
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
