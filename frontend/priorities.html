@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkWise — Priority Zones</title>
+  <meta name="description" content="Patrol priority routing recommendations per shift.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page-header">
+    <h1>Patrol Priority Zones</h1>
+    <p class="subtitle">Recommended deployment ranking separated by operational shift.</p>
+  </div>
+
+  <div class="controls-bar">
+    <div class="control-group">
+      <label for="shiftSelect">Filter Shift:</label>
+      <select id="shiftSelect">
+        <option value="">All Shifts</option>
+        <option value="morning">Morning (06:00-14:00)</option>
+        <option value="evening">Evening (14:00-22:00)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body no-pad">
+      <div style="overflow-x: auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Shift</th>
+              <th>Zone ID</th>
+              <th>Predicted EIS</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="priorityBody">
+            <tr><td colspan="5" class="loading">Loading priority data…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="components/sidebar.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/priorities.js"></script>
+</body>
+</html>

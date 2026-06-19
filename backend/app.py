@@ -1,19 +1,44 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from backend.models import CRIRequest, IPSRequest, EISRequest
 from backend.logic import compute_cri, compute_ips, compute_eis
 from backend.db import get_collection
 from backend.model_routes import model_bp
+import os
 
-app = Flask(__name__)
+# Base directory for the repository
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+
+# Initialize Flask with static folder pointing to the frontend
+app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
+
+# Basic CORS headers for local development if needed
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    return response
 
 # Register the model-output blueprint
 app.register_blueprint(model_bp)
 
+# ─────────────────────── Static Frontend Serving ───────────────────────
 
-# ─────────────────────── Health check ───────────────────────
+@app.route("/")
+def serve_index():
+    """Serve the main frontend dashboard."""
+    return send_from_directory(app.static_folder, "index.html")
 
-@app.route('/', methods=['GET'])
-def index():
+@app.route("/<path:path>")
+def serve_static(path):
+    """Serve other static files (HTML, JS, CSS)."""
+    return send_from_directory(app.static_folder, path)
+
+
+# ─────────────────────── Health check & API root ───────────────────────
+
+@app.route('/api', methods=['GET'])
+def api_index():
     """Root health-check endpoint."""
     return jsonify({
         "service": "ParkWise Impact Matrix API",

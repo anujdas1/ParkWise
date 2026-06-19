@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkWise — Dashboard</title>
+  <meta name="description" content="ParkWise Impact Matrix Dashboard — Proactive traffic enforcement intelligence.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Page content (sidebar injected by JS) -->
+  <div class="page-header">
+    <h1>Dashboard <span class="badge">LIVE</span></h1>
+    <p class="subtitle">Real-time traffic enforcement intelligence powered by the ParkWise Impact Matrix.</p>
+  </div>
+
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card"><div class="stat-label">Total Records</div><div class="stat-value" id="statRecords">—</div></div>
+    <div class="stat-card"><div class="stat-label">Unique Locations</div><div class="stat-value" id="statLocations">—</div></div>
+    <div class="stat-card"><div class="stat-label">Top Hotspot EIS</div><div class="stat-value" id="statTopEIS">—</div></div>
+    <div class="stat-card"><div class="stat-label">Model AUC</div><div class="stat-value" id="statAUC">—</div><div class="stat-sub">Occurrence prediction</div></div>
+  </div>
+
+  <div class="content-grid two-col">
+    <div class="card">
+      <div class="card-header">
+        <h3>🗺️ Top Hotspot Zones</h3>
+        <span class="card-sub">72-hour predicted EIS</span>
+      </div>
+      <div class="card-body no-pad">
+        <div class="map-container" id="dashboardMap"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>🔥 Highest Risk Zones</h3>
+        <span class="card-sub">Ranked by cumulative EIS</span>
+      </div>
+      <div class="card-body no-pad">
+        <div style="max-height: 450px; overflow-y: auto;">
+          <table class="data-table" id="hotspotsTable">
+            <thead><tr><th>#</th><th>Zone</th><th>Lat</th><th>Lon</th><th>EIS</th></tr></thead>
+            <tbody id="hotspotsBody"><tr><td colspan="5" class="loading">Loading data…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="components/sidebar.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
