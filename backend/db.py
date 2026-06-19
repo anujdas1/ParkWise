@@ -2,8 +2,8 @@ import os
 from pymongo import MongoClient
 from pymongo.collection import Collection
 
-# Retrieve the connection URI from the environment. Fallback to a local MongoDB instance.
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://forcodingnits_db_user:1eIElm4HTMZfeDRE@cluster0.cb3rzh6.mongodb.net/?appName=Cluster0")
+# Retrieve the connection URI from the environment. Fallback to localhost if not set.
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 
 # Database and collection names – you can adjust via env vars if needed.
 DB_NAME = os.getenv("MONGO_DB_NAME", "parkwise")

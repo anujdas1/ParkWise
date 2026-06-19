@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ## Running the API
 ```powershell
 # Ensure the environment variable is set (skip if you are happy with the default URI)
-$env:MONGO_URI = "mongodb+srv://forcodingnits_db_user:1eIElm4HTMZfeDRE@cluster0.cb3rzh6.mongodb.net/?appName=Cluster0"
+$env:MONGO_URI = "mongodb+srv://<username>:<password>@cluster0.cb3rzh6.mongodb.net/?appName=Cluster0"
 
 # Start the Flask server
 python -m backend.app
