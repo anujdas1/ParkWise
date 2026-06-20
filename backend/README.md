@@ -48,5 +48,3 @@ A minimal loader can be added later (`data_loader.py`).
 4. **Containerise** – use the provided `Dockerfile` (you can add it later) for easy deployment.
 5. **Extend the API** – add endpoints for `/forecast` and `/simulate` as the product grows.
 
----
-Feel free to ask for any of the above items to be generated, or let me know if you’d like to run the server now.
