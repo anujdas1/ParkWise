@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: parkwise
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      # The MONGO_URI is currently baked into db.py, but if you want to override it in Render, 
+      # you can add a secret environment variable in the Render Dashboard later.
