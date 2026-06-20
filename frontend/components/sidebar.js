@@ -45,7 +45,13 @@ const SIDEBAR_HTML = `
         Analytics
       </a>
     </li>
-  </ul>
+          <li>
+          <a href="congestion.html" data-page="congestion">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/></svg>
+            Congestion
+          </a>
+        </li>
+      </ul>
 </aside>`;
 
 function initSidebar(activePage) {

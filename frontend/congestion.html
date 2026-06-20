@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkWise — Congestion</title>
+  <meta name="description" content="Congestion model visualizations and zone summaries.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page-header">
+    <h1>Congestion Model</h1>
+    <p class="subtitle">Heatmap and zone-level EIS summary for traffic congestion.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>📍  Congestion Heatmap</h3>
+    </div>
+    <div class="card-body" id="heatmapContainer">
+      <!-- Heatmap HTML will be injected here -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>🗺️  Zone EIS Summary</h3>
+    </div>
+    <div class="card-body">
+      <table class="data-table" id="zoneSummaryTable">
+        <thead>
+          <tr>
+            <th>Zone ID</th>
+            <th>EIS</th>
+            <th>Additional Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+<div class="card">
+  <div class="card-header">
+    <h3>🔥 Top 20 Congestion Hotspots</h3>
+  </div>
+  <div class="card-body" id="topHotspotsContainer">
+    <!-- Top hotspots HTML will be injected here -->
+  </div>
+</div>
+
+  <script src="components/sidebar.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/congestion.js"></script>
+</body>
+</html>

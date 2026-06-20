@@ -26,6 +26,10 @@ def insert_record(record: dict) -> str:
     result = _collection.insert_one(record)
     return str(result.inserted_id)
 
+def get_collection_by_name(name: str) -> Collection:
+    """Return a MongoDB collection with the given name within the configured database."""
+    return _db[name]
+
 def find_records(filter_query: dict = None, limit: int = 100):
     """Retrieve records matching *filter_query* (default all) up to *limit* rows."""
     if filter_query is None:

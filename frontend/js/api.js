@@ -22,15 +22,21 @@ async function apiFetch(endpoint, options = {}) {
 
 /* ---- GET helpers ---- */
 const api = {
-  getStats:          ()            => apiFetch('/stats'),
-  getTopHotspots:    ()            => apiFetch('/top-hotspots'),
-  getModelReport:    ()            => apiFetch('/model-report'),
-  getForecast:       (params = '') => apiFetch(`/forecast${params ? '?' + params : ''}`),
+  // Core endpoints
+  getStats: () => apiFetch('/stats'),
+  getTopHotspots: () => apiFetch('/top-hotspots'),
+  getModelReport: () => apiFetch('/model-report'),
+  getForecast: (params = '') => apiFetch(`/forecast${params ? '?' + params : ''}`),
   getPatrolPriority: (params = '') => apiFetch(`/patrol-priority${params ? '?' + params : ''}`),
-  getHotspots:       (limit = 20)  => apiFetch(`/hotspots?limit=${limit}`),
+  getHotspots: (limit = 20) => apiFetch(`/hotspots?limit=${limit}`),
 
-  /* POST helpers */
-  computeCRI: (data) => apiFetch('/cri',  { method: 'POST', body: JSON.stringify(data) }),
-  computeIPS: (data) => apiFetch('/ips',  { method: 'POST', body: JSON.stringify(data) }),
-  computeEIS: (data) => apiFetch('/eis',  { method: 'POST', body: JSON.stringify(data) }),
+  // Congestion model helpers
+  getCongestionHeatmap: () => fetch(`${API_BASE}/congestion/heatmap`).then(r => r.text()),
+  getCongestionZoneSummary: (params = '') => apiFetch(`/congestion/zone-summary${params ? '?' + params : ''}`),
+  getCongestionTopHotspots: () => fetch(`${API_BASE}/congestion/top-hotspots`).then(r => r.text()),
+
+  // POST helpers
+  computeCRI: (data) => apiFetch('/cri', { method: 'POST', body: JSON.stringify(data) }),
+  computeIPS: (data) => apiFetch('/ips', { method: 'POST', body: JSON.stringify(data) }),
+  computeEIS: (data) => apiFetch('/eis', { method: 'POST', body: JSON.stringify(data) }),
 };
