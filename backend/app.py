@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from backend.models import CRIRequest, IPSRequest, EISRequest
 from backend.logic import compute_cri, compute_ips, compute_eis
 from backend.db import get_collection
@@ -11,13 +12,8 @@ FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
 # Initialize Flask with static folder pointing to the frontend
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
-
-# Basic CORS headers for local development if needed
-@app.after_request
-def add_cors_headers(response):
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
-    return response
+# Enable CORS for the Netlify frontend only
+CORS(app, origins=["https://parkwise1.netlify.app"])
 
 # Register the model-output blueprint
 app.register_blueprint(model_bp)
