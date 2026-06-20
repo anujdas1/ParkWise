@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const resp = await api.getCongestionZoneSummary();
     const data = resp.zone_summary || [];
     const tbody = document.querySelector('#zoneSummaryTable tbody');
-
-    // FIX: update table header to match the rich data we now display
     const thead = document.querySelector('#zoneSummaryTable thead tr');
     if (thead) {
       thead.innerHTML = `
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         data.forEach(zone => {
           const tr = document.createElement('tr');
-          // FIX: use correct field name "total_eis" (not "predicted_EIS" or "EIS")
           const eis = zone.total_eis ?? zone.predicted_EIS ?? zone.EIS ?? '';
           const eisFormatted = typeof eis === 'number' ? eis.toLocaleString(undefined, {maximumFractionDigits: 1}) : eis;
           tr.innerHTML = `
@@ -51,3 +48,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 });
+

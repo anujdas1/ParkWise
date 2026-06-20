@@ -97,8 +97,6 @@ def patrol_priority():
     for doc in cursor:
         doc['_id'] = str(doc.get('_id'))
         raw.append(doc)
-
-    # FIX: Sort by predicted_EIS descending within each shift group
     # so highest-risk zones always appear first regardless of MongoDB insertion order
     from collections import defaultdict
     shift_groups = defaultdict(list)
@@ -143,9 +141,8 @@ def enforcement_quality():
 @model_bp.route("/model-report", methods=["GET"]) 
 def model_report():
     """Return model evaluation metrics."""
-    coll = get_collection_by_name("model_report")  # FIX: was "model_evaluation"
+    coll = get_collection_by_name("model_report")
     doc = coll.find_one({})
-    # FIX: data is stored nested inside a "content" key by load_model_data.py
     evaluation = doc.get("content", doc) if doc else {}
     if isinstance(evaluation, dict):
         evaluation.pop("_id", None)
@@ -160,7 +157,7 @@ def congestion_heatmap():
     """Return the EIS heatmap HTML for congestion model."""
     coll = get_collection_by_name("congestion_heatmap")
     doc = coll.find_one({})
-    html_content = doc.get("content", doc.get("html", "")) if doc else ""  # FIX: was "html" only
+    html_content = doc.get("content", doc.get("html", "")) if doc else ""
     return current_app.response_class(html_content, mimetype="text/html")
 
 @model_bp.route("/congestion/zone-summary", methods=["GET"]) 
@@ -177,7 +174,8 @@ def congestion_top_hotspots():
     """Return top 20 hotspots detailed HTML for congestion model."""
     coll = get_collection_by_name("congestion_top_hotspots")
     doc = coll.find_one({})
-    html_content = doc.get("content", doc.get("html", "")) if doc else ""  # FIX: was "html" only
+    html_content = doc.get("content", doc.get("html", "")) if doc else ""
     return current_app.response_class(html_content, mimetype="text/html")
+
 
 

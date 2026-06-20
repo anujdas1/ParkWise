@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (heatmapContainer) {
       if (heatmapHTML && heatmapHTML.trim().length > 0) {
         heatmapHTML = heatmapHTML.replace('</body>', THEME_INJECTOR);
-        // FIX: inject HTML into an iframe so scripts/styles inside it work correctly
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
         iframe.style.height = '600px';
@@ -71,7 +70,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (hotspotsContainer) {
       if (hotspotsHTML && hotspotsHTML.trim().length > 0) {
         hotspotsHTML = hotspotsHTML.replace('</body>', THEME_INJECTOR);
-        // FIX: also use iframe here so embedded styles/scripts render properly
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
         iframe.style.height = '600px';
@@ -90,3 +88,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 }); // end of DOMContentLoaded
+

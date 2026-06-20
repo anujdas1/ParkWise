@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Update metrics
     document.getElementById('valMAE').textContent = report.hurdle_model_mae != null ? report.hurdle_model_mae.toFixed(3) : '—';
     document.getElementById('valRMSE').textContent = report.hurdle_model_rmse != null ? report.hurdle_model_rmse.toFixed(3) : '—';
-    document.getElementById('valMAEImp').textContent = report.mae_improvement_vs_naive_pct != null ? report.mae_improvement_vs_naive_pct.toFixed(1) + '%' : '—';  // FIX: was ?.toFixed() + '%' || '—' which gave "undefined%"
-    document.getElementById('valRMSEImp').textContent = report.rmse_improvement_vs_naive_pct != null ? report.rmse_improvement_vs_naive_pct.toFixed(1) + '%' : '—';  // FIX: same
+    document.getElementById('valMAEImp').textContent = report.mae_improvement_vs_naive_pct != null ? report.mae_improvement_vs_naive_pct.toFixed(1) + '%' : '—';
+    document.getElementById('valRMSEImp').textContent = report.rmse_improvement_vs_naive_pct != null ? report.rmse_improvement_vs_naive_pct.toFixed(1) + '%' : '—';
 
     // Populate zone select
     const topZones = topResp.hotspots || [];
@@ -115,3 +115,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Failed to load forecast data', err);
   }
 });
+
