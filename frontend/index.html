@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ParkWise — Impact Matrix System</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <meta name="description" content="ParkWise Impact Matrix — Proactive traffic enforcement intelligence.">
   <link rel="stylesheet" href="css/styles.css">
   <style>
@@ -43,9 +44,34 @@
     }
 
     .hero-section {
-      text-align: center;
-      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      text-align: left;
+      margin-bottom: 6rem;
+      width: 100%;
       animation: fadeInDown 0.8s ease-out;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero-illustration {
+      flex: 1;
+      max-width: 500px;
+      display: flex;
+      justify-content: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-illustration img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
     }
 
     .hero-title {
@@ -68,7 +94,7 @@
       font-size: 1.25rem;
       color: var(--text-secondary);
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 0 2rem 0;
       line-height: 1.6;
     }
 
@@ -87,7 +113,6 @@
     }
 
     .btn-primary:hover {
-      background: var(--accent-hover);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px var(--accent-glow);
       color: #fff;
@@ -95,13 +120,14 @@
 
     .modules-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(12, 1fr);
       gap: 1.5rem;
       width: 100%;
       animation: fadeInUp 0.8s ease-out 0.2s both;
     }
 
     .module-card {
+      grid-column: span 12;
       background: var(--bg-surface-2);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -114,6 +140,14 @@
       flex-direction: column;
       position: relative;
       overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .module-card { grid-column: span 6; }
+    }
+
+    @media (min-width: 1024px) {
+      .module-card { grid-column: span 4; }
     }
 
     .module-card::before {
@@ -182,31 +216,172 @@
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+      .hero-content {
+        max-width: 100%;
+      }
+      .hero-illustration {
+        max-width: 100%;
+        margin-top: 1rem;
+      }
+      .hero-subtitle {
+        margin: 0 auto 2rem;
+      }
+      .hero-title { font-size: 2.5rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .landing-container { padding: 2rem 1rem; }
+      .glow-blob { width: 100vw; height: 100vw; max-width: 400px; max-height: 400px; }
+      .footer-links-container { flex-direction: column; gap: 2rem !important; }
+      
+      .nav-links.desktop-only { display: none; }
+      .mobile-nav-toggle { display: block; }
+    }
+
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      gap: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    }
+    .mobile-menu.open {
+      display: flex;
+    }
   </style>
   <script src="js/theme.js"></script>
 </head>
 <body>
+  <div class="bg-grid"></div>
   
+  <nav class="sticky-nav">
+    <div class="brand-name" style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">Park<span style="color: var(--accent);">Wise</span></div>
+    
+    <div class="nav-links desktop-only">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#modules" class="nav-link">Modules</a>
+            <button style="background: var(--bg-surface-2); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: var(--radius-sm); padding: 0.35rem 0.75rem; font-size: 0.85rem; display: flex; align-items: center; gap: 2rem; cursor: pointer;">
+        <span style="display: flex; align-items: center; gap: 0.5rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Search</span>
+        <div style="display: flex; gap: 0.2rem;"><kbd>?</kbd><kbd>K</kbd></div>
+      </button>
+      <a href="#" class="btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Contact Sales</a>
+      <button id="landingThemeSwitcher" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-2.25l-1.591 1.591M5.25 12H3m2.25-4.773L3.659 5.636M16.95 12a4.95 4.95 0 11-9.9 0 4.95 4.95 0 019.9 0z" /></svg><svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></button>
+    </div>
+
+    <button id="mobileNavToggle" class="mobile-nav-toggle" style="display: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 28px; height: 28px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#modules" class="nav-link">Modules</a>
+      <a href="#" class="nav-link">Contact Sales</a>
+      <button id="mobileThemeSwitcher" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-2.25l-1.591 1.591M5.25 12H3m2.25-4.773L3.659 5.636M16.95 12a4.95 4.95 0 11-9.9 0 4.95 4.95 0 019.9 0z" /></svg><svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></button>
+    </div>
+  </nav>
+
   <div class="glow-blob"></div>
 
   <div class="landing-container">
-    <div style="position: absolute; top: 1rem; right: 2rem; z-index: 10;">
-      <select id="landingThemeSwitcher" style="background: var(--bg-surface-2); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-sm); padding: 0.5rem; font-size: 0.8rem; cursor: pointer;">
-        <option value="dark">Dark Mode</option>
-        <option value="light">Light Mode</option>
-      </select>
-    </div>
 
     <header class="hero-section">
-      <h1 class="hero-title">Welcome to <span>ParkWise</span></h1>
-      <p class="hero-subtitle">The intelligent, proactive traffic enforcement matrix. Analyze congestion hotspots, forecast risks, and deploy officers where they are needed most.</p>
-      <a href="dashboard.html" class="btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-        Launch Dashboard
-      </a>
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to <span>ParkWise</span></h1>
+        <p class="hero-subtitle">Enterprise traffic enforcement and analytics platform. Centralize your enforcement data, forecast risks, and optimize patrol deployments.</p>
+        <a href="dashboard.html" class="btn-primary" style="margin-bottom: 2rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Launch Dashboard
+        </a>
+      </div>
+      <div class="hero-illustration" style="position: relative; perspective: 1000px;">
+        <div style="background: var(--bg-surface-2); border: 1px solid var(--border-color); border-radius: 1rem; width: 100%; height: 350px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; overflow: hidden; transform: rotateY(-5deg) rotateX(5deg);">
+          <div style="height: 3rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; padding: 0 1rem; gap: 0.5rem; background: rgba(0,0,0,0.1);">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: #10b981;"></div>
+          </div>
+          <div style="flex: 1; padding: 1.5rem; display: flex; gap: 1.5rem;">
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 1rem;">
+              <div style="height: 60px; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                <div style="width: 40%; height: 8px; background: var(--text-secondary); border-radius: 4px; margin-bottom: 0.5rem;"></div>
+                <div style="width: 70%; height: 16px; background: var(--accent); border-radius: 4px;"></div>
+              </div>
+              <div style="flex: 1; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 0.5rem; position: relative; overflow: hidden;">
+                <div style="position: absolute; bottom: 0; left: 10%; width: 15%; height: 40%; background: rgba(14, 165, 233, 0.8); border-radius: 4px 4px 0 0;"></div>
+                <div style="position: absolute; bottom: 0; left: 35%; width: 15%; height: 70%; background: rgba(14, 165, 233, 0.8); border-radius: 4px 4px 0 0;"></div>
+                <div style="position: absolute; bottom: 0; left: 60%; width: 15%; height: 50%; background: rgba(14, 165, 233, 0.8); border-radius: 4px 4px 0 0;"></div>
+              </div>
+            </div>
+            <div style="width: 150px; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+               <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px;"></div>
+               <div style="width: 80%; height: 8px; background: var(--border-color); border-radius: 4px;"></div>
+               <div style="width: 90%; height: 8px; background: var(--border-color); border-radius: 4px;"></div>
+               <div style="width: 100%; height: 100px; background: rgba(239, 68, 68, 0.1); border: 1px dashed #ef4444; border-radius: 4px; margin-top: auto; display: flex; align-items: center; justify-content: center;">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="width:2rem;height:2rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <div class="modules-grid">
+    <div id="features" class="features-overview scroll-fade" style="text-align: center; max-width: 800px; margin: 0 auto 4rem; animation: fadeInDown 0.8s ease-out 0.1s both;">
+      <h2 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 1rem;">Centralized Enforcement Intelligence</h2>
+      <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">
+        Consolidate your city's traffic enforcement data. Utilize our predictive analytics, thermal heatmaps, and priority scoring to optimize patrol deployments and maximize city-wide compliance.
+      </p>
+    </div>
+    <div id="modules" class="modules-grid">
       
       <!-- Dashboard -->
       <a href="dashboard.html" class="module-card">
@@ -283,24 +458,88 @@
     </div>
   </div>
 
+  <footer style="width: 100%; border-top: 1px solid var(--border-color); padding: 3rem 2rem; background: var(--bg-surface); margin-top: auto; z-index: 1;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+      <div style="max-width: 300px;">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1rem;">Park<span style="color: var(--accent);">Wise</span></div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem;">Empowering modern cities with proactive traffic enforcement intelligence and actionable data modeling.</p>
+        <a href="mailto:hello@parkwise.io" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; font-size: 0.9rem; text-decoration: none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          hello@parkwise.io
+        </a>
+      </div>
+      <div class="footer-links-container" style="display: flex; gap: 4rem;">
+        <div>
+          <h4 style="color: var(--text-primary); font-weight: 600; margin-bottom: 1rem;">Modules</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="dashboard.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Dashboard</a></li>
+            <li><a href="hotspots.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Hotspot Map</a></li>
+            <li><a href="forecast.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Forecasts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: var(--text-primary); font-weight: 600; margin-bottom: 1rem;">Resources</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Documentation</a></li>
+            <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">API Reference</a></li>
+            <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Support</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; color: var(--text-secondary); font-size: 0.8rem;">
+      <p style="margin: 0;">&copy; 2026 ParkWise Impact Matrix. All rights reserved.</p>
+      <div style="display: flex; gap: 1.5rem; align-items: center;">
+        <a href="#" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+        <span style="color: var(--border-color);">|</span>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <!-- Twitter / X -->
+          <a href="#" style="color: var(--text-secondary); transition: color 0.2s;" aria-label="Twitter" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" style="color: var(--text-secondary); transition: color 0.2s;" aria-label="LinkedIn" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- GitHub -->
+          <a href="#" style="color: var(--text-secondary); transition: color 0.2s;" aria-label="GitHub" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px;"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    const landingThemeSelect = document.getElementById('landingThemeSwitcher');
-    if (landingThemeSelect && typeof getTheme === 'function') {
-      landingThemeSelect.value = getTheme();
-      landingThemeSelect.addEventListener('change', (e) => {
-        applyTheme(e.target.value);
+    const setupThemeToggle = (id) => {
+      const btn = document.getElementById(id);
+      if (btn && typeof getTheme === 'function') {
+        btn.addEventListener('click', () => {
+          const newTheme = getTheme() === 'dark' ? 'light' : 'dark';
+          applyTheme(newTheme);
+        });
+      }
+    };
+    setupThemeToggle('landingThemeSwitcher');
+    setupThemeToggle('mobileThemeSwitcher');
+
+    // Mobile Nav Toggle
+    const toggleBtn = document.getElementById('mobileNavToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      // Close on link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+        });
       });
     }
   </script>
 </body>
 </html>
 
-<script>
-  const landingThemeSelect = document.getElementById('landingThemeSwitcher');
-  if (landingThemeSelect) {
-    landingThemeSelect.value = getTheme();
-    landingThemeSelect.addEventListener('change', (e) => {
-      applyTheme(e.target.value);
-    });
-  }
-</script>
+

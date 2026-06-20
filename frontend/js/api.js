@@ -39,4 +39,5 @@ const api = {
   computeCRI: (data) => apiFetch('/cri', { method: 'POST', body: JSON.stringify(data) }),
   computeIPS: (data) => apiFetch('/ips', { method: 'POST', body: JSON.stringify(data) }),
   computeEIS: (data) => apiFetch('/eis', { method: 'POST', body: JSON.stringify(data) }),
+  getEnforcementQuality: () => apiFetch('/enforcement-quality'),
 };

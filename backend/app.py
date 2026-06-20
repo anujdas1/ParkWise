@@ -34,6 +34,11 @@ def serve_static(path):
     """Serve other static files (HTML, JS, CSS)."""
     return send_from_directory(app.static_folder, path)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """Serve custom 404 page for missing routes."""
+    return send_from_directory(app.static_folder, "404.html"), 404
+
 
 # ─────────────────────── Health check & API root ───────────────────────
 

@@ -124,7 +124,22 @@ def patrol_priority():
         "description": "Zone patrol priority ranked by predicted EIS per shift",
     })
 
-# ─────────────────────── Model evaluation ───────────────────────
+# ─────────────────────── Model evaluation  # ── Enforcement Quality ──
+@model_bp.route("/enforcement-quality", methods=["GET"])
+def enforcement_quality():
+    """Return enforcement quality scores grouped by zone."""
+    try:
+        coll = get_collection_by_name("enforcement_quality")
+        data = list(coll.find({}, {"_id": 0}))
+        if data:
+            data.sort(key=lambda x: x.get("rejection_rate", 0), reverse=True)
+            return jsonify({"data": data})
+    except Exception as e:
+        print(f"Error fetching enforcement_quality: {e}")
+        
+    return jsonify({"data": []})
+
+# ── Model evaluation ──
 @model_bp.route("/model-report", methods=["GET"]) 
 def model_report():
     """Return model evaluation metrics."""
@@ -164,3 +179,5 @@ def congestion_top_hotspots():
     doc = coll.find_one({})
     html_content = doc.get("content", doc.get("html", "")) if doc else ""  # FIX: was "html" only
     return current_app.response_class(html_content, mimetype="text/html")
+
+

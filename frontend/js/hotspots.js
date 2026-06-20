@@ -9,10 +9,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     attributionControl: true,
   }).setView([12.97, 77.59], 12);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  let currentTheme = typeof getTheme === 'function' ? getTheme() : 'dark';
+  let tileLayer = L.tileLayer(typeof getMapTileUrl === 'function' ? getMapTileUrl(currentTheme) : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19,
   }).addTo(map);
+
+  window.addEventListener('themeChanged', (e) => {
+    if (typeof getMapTileUrl === 'function') {
+      tileLayer.setUrl(getMapTileUrl(e.detail.theme));
+    }
+  });
 
   let allData = [];
   let markers = [];

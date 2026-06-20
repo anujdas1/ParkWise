@@ -4,11 +4,17 @@
 
 const SIDEBAR_HTML = `
 <aside class="sidebar">
-  <div class="sidebar-brand">
+  <a href="index.html" class="sidebar-brand" style="text-decoration: none; color: inherit; display: block;">
     <span class="brand-sub">Impact Matrix</span>
     <div class="brand-name">Park<span>Wise</span></div>
-  </div>
+  </a>
   <ul class="sidebar-nav">
+    <li>
+      <a href="index.html">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.592 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+        Home
+      </a>
+    </li>
     <li>
       <a href="dashboard.html" data-page="dashboard">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
@@ -57,20 +63,29 @@ const SIDEBAR_HTML = `
             Zone Summary
           </a>
         </li>
+        <li>
+          <a href="quality.html" data-page="quality">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-1.81.588l1.32 5.378a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.32-5.378a.563.563 0 00-.181-.588L3.076 10.385c-.38-.325-.178-.948.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+            Enforcement Quality
+          </a>
+        </li>
       </ul>
       
       <div style="padding: 1.5rem 1.25rem; margin-top: auto; border-top: 1px solid var(--sidebar-border);">
-        <label for="themeSwitcher" style="font-size: 0.75rem; color: var(--sidebar-text-secondary); display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Theme</label>
-        <select id="themeSwitcher" style="width: 100%; background: var(--sidebar-theme-bg, var(--bg-surface-2)); border: 1px solid var(--sidebar-border); color: var(--sidebar-text-primary); border-radius: var(--radius-sm); padding: 0.5rem; font-size: 0.8rem;">
-          <option value="dark">Dark Mode</option>
-          <option value="light">Light Mode</option>
-        </select>
+        <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 0.85rem; color: var(--sidebar-text-primary); font-weight: 500;">Theme</span><button id="themeSwitcher" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-2.25l-1.591 1.591M5.25 12H3m2.25-4.773L3.659 5.636M16.95 12a4.95 4.95 0 11-9.9 0 4.95 4.95 0 019.9 0z" /></svg><svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></button></div>
       </div>
 </aside>`;
 
 function initSidebar(activePage) {
   document.body.insertAdjacentHTML('afterbegin',
-    '<div class="app-layout">' + SIDEBAR_HTML + '<main class="main-content fade-in">'
+    '<div class="app-layout"><div class="bg-grid"></div>' + SIDEBAR_HTML + '<main class="main-content fade-in">' +
+    '<div class="mobile-header">' +
+      '<button id="mobileMenuBtn" class="mobile-menu-btn">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>' +
+      '</button>' +
+      '<div class="brand-name" style="font-weight:800; font-size:1.25rem;">Park<span style="color:var(--accent)">Wise</span></div>' +
+      '<div style="width: 40px;"></div><!-- Spacer for centering -->' +
+    '</div>'
   );
 
   // Move all existing body children (except the layout wrapper) into main-content
@@ -86,12 +101,29 @@ function initSidebar(activePage) {
   const activeLink = document.querySelector(`[data-page="${activePage}"]`);
   if (activeLink) activeLink.classList.add('active');
 
+  // Setup mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const sidebar = document.querySelector('.sidebar');
+  if (mobileMenuBtn && sidebar) {
+    mobileMenuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+    // Close sidebar when clicking outside on mobile
+    mainContent.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && sidebar.classList.contains('open') && !e.target.closest('.mobile-header')) {
+        sidebar.classList.remove('open');
+      }
+    });
+  }
+
   // Setup theme switcher
-  const themeSelect = document.getElementById('themeSwitcher');
-  if (themeSelect && typeof getTheme === 'function') {
-    themeSelect.value = getTheme();
-    themeSelect.addEventListener('change', (e) => {
-      applyTheme(e.target.value);
+  const themeToggle = document.getElementById('themeSwitcher');
+  if (themeToggle && typeof getTheme === 'function') {
+    themeToggle.addEventListener('click', () => {
+      const newTheme = getTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
     });
   }
 }
+
+
