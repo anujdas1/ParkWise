@@ -3,7 +3,7 @@
  * All fetch calls to the Flask backend go through here.
  */
 
-const API_BASE = window.location.origin;
+const API_BASE = "https://parkwise-1.onrender.com";
 
 async function apiFetch(endpoint, options = {}) {
   try {
