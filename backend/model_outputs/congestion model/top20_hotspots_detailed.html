@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_acf8e535397a525a844db2da1e615ae7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_acf8e535397a525a844db2da1e615ae7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_acf8e535397a525a844db2da1e615ae7 = L.map(
+                "map_acf8e535397a525a844db2da1e615ae7",
+                {
+                    center: [12.99375, 77.59849999999999],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e7d03d2e7bee55355ce2e8bbd6725e80 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e7d03d2e7bee55355ce2e8bbd6725e80.addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+            var circle_marker_d430c0e4e3e13aa841104decdfef801a = L.circleMarker(
+                [12.98, 77.61],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.0, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_fe4e6ae8c0f473397b16d6df370d28d0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_dbe4be185a58922a666a029e89c97032 = $(`<div id="html_dbe4be185a58922a666a029e89c97032" style="width: 100.0%; height: 100.0%;"><b>EIS rank #1</b> (raw-count rank was #2)<br>EIS score: 62,688<br>Violations: 11452<br>Dominant violation: WRONG PARKING<br>Primary vehicle: PASSENGER AUTO<br>Nearest junction: BTP051 - Safina Plaza Junction</div>`)[0];
+                popup_fe4e6ae8c0f473397b16d6df370d28d0.setContent(html_dbe4be185a58922a666a029e89c97032);
+            
+        
+
+        circle_marker_d430c0e4e3e13aa841104decdfef801a.bindPopup(popup_fe4e6ae8c0f473397b16d6df370d28d0)
+        ;
+
+        
+    
+    
+            var circle_marker_9b8aca531a02629dfedac6396dc1ad84 = L.circleMarker(
+                [12.975, 77.58],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.4416829526686, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_fdf6fd656dff414bac4bc65b28948ba0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3d2f01941a2288987408e79139e62743 = $(`<div id="html_3d2f01941a2288987408e79139e62743" style="width: 100.0%; height: 100.0%;"><b>EIS rank #2</b> (raw-count rank was #3)<br>EIS score: 48,400<br>Violations: 11111<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP044 - Sagar Theatre Junction</div>`)[0];
+                popup_fdf6fd656dff414bac4bc65b28948ba0.setContent(html_3d2f01941a2288987408e79139e62743);
+            
+        
+
+        circle_marker_9b8aca531a02629dfedac6396dc1ad84.bindPopup(popup_fdf6fd656dff414bac4bc65b28948ba0)
+        ;
+
+        
+    
+    
+            var circle_marker_7c371598cb7af18ea9fc38ad15e0aa64 = L.circleMarker(
+                [12.975, 77.575],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.892860539780017, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_3220d518fdf448c7806dbae14617bab1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4b30a2023eea344088bae2244547917b = $(`<div id="html_4b30a2023eea344088bae2244547917b" style="width: 100.0%; height: 100.0%;"><b>EIS rank #3</b> (raw-count rank was #1)<br>EIS score: 46,680<br>Violations: 11515<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP040 - Elite Junction</div>`)[0];
+                popup_3220d518fdf448c7806dbae14617bab1.setContent(html_4b30a2023eea344088bae2244547917b);
+            
+        
+
+        circle_marker_7c371598cb7af18ea9fc38ad15e0aa64.bindPopup(popup_3220d518fdf448c7806dbae14617bab1)
+        ;
+
+        
+    
+    
+            var circle_marker_fb11aba581d611fa359bff0c61104ada = L.circleMarker(
+                [12.965, 77.575],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.224088806417015, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_1af8021aac5c864bd7144f818c7b8362 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_5bb92a889c5d72d98731015b1ec51d60 = $(`<div id="html_5bb92a889c5d72d98731015b1ec51d60" style="width: 100.0%; height: 100.0%;"><b>EIS rank #4</b> (raw-count rank was #4)<br>EIS score: 35,181<br>Violations: 9329<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP082 - KR Market Junction</div>`)[0];
+                popup_1af8021aac5c864bd7144f818c7b8362.setContent(html_5bb92a889c5d72d98731015b1ec51d60);
+            
+        
+
+        circle_marker_fb11aba581d611fa359bff0c61104ada.bindPopup(popup_1af8021aac5c864bd7144f818c7b8362)
+        ;
+
+        
+    
+    
+            var circle_marker_59610d2e86ef68ef06d7f33b0e996bc0 = L.circleMarker(
+                [12.98, 77.575],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.460921671060447, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_9d6c363dda96fb21085e81ea9963eec1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_02ce1242d69a464a3ddf2e645c3655ce = $(`<div id="html_02ce1242d69a464a3ddf2e645c3655ce" style="width: 100.0%; height: 100.0%;"><b>EIS rank #5</b> (raw-count rank was #6)<br>EIS score: 32,789<br>Violations: 7315<br>Dominant violation: WRONG PARKING<br>Primary vehicle: CAR<br>Nearest junction: BTP057 - Anand Rao Junction</div>`)[0];
+                popup_9d6c363dda96fb21085e81ea9963eec1.setContent(html_02ce1242d69a464a3ddf2e645c3655ce);
+            
+        
+
+        circle_marker_59610d2e86ef68ef06d7f33b0e996bc0.bindPopup(popup_9d6c363dda96fb21085e81ea9963eec1)
+        ;
+
+        
+    
+    
+            var circle_marker_f607e487cafc1f78a6c2924776351554 = L.circleMarker(
+                [13.01, 77.555],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.910923196471098, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_85cc1a2cd1ea2113e1c209f2655f7ce3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_49c058ad27943463014c9a84ad273720 = $(`<div id="html_49c058ad27943463014c9a84ad273720" style="width: 100.0%; height: 100.0%;"><b>EIS rank #6</b> (raw-count rank was #7)<br>EIS score: 24,796<br>Violations: 6707<br>Dominant violation: WRONG PARKING<br>Primary vehicle: CAR<br>Nearest junction: BTP001 - 10th Cross, Dr. Rajkumar Road</div>`)[0];
+                popup_85cc1a2cd1ea2113e1c209f2655f7ce3.setContent(html_49c058ad27943463014c9a84ad273720);
+            
+        
+
+        circle_marker_f607e487cafc1f78a6c2924776351554.bindPopup(popup_85cc1a2cd1ea2113e1c209f2655f7ce3)
+        ;
+
+        
+    
+    
+            var circle_marker_17494920ab7a1b90abfb739fb4d62958 = L.circleMarker(
+                [13.0, 77.55],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.58159720664409, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_685dd0e1a55a703a1f74e76622cca3e3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3edcdc4360f814870cdc4971fa7b4d4b = $(`<div id="html_3edcdc4360f814870cdc4971fa7b4d4b" style="width: 100.0%; height: 100.0%;"><b>EIS rank #7</b> (raw-count rank was #8)<br>EIS score: 23,764<br>Violations: 6201<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP027 - Modi Bridge Junction</div>`)[0];
+                popup_685dd0e1a55a703a1f74e76622cca3e3.setContent(html_3edcdc4360f814870cdc4971fa7b4d4b);
+            
+        
+
+        circle_marker_17494920ab7a1b90abfb739fb4d62958.bindPopup(popup_685dd0e1a55a703a1f74e76622cca3e3)
+        ;
+
+        
+    
+    
+            var circle_marker_b135e4233b97eacd261c971087430187 = L.circleMarker(
+                [12.985, 77.605],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.483600040916897, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_fd20ac768db221a98ab2d87b84f8f494 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_fb3c9bd781d705d60adbab774d04c611 = $(`<div id="html_fb3c9bd781d705d60adbab774d04c611" style="width: 100.0%; height: 100.0%;"><b>EIS rank #8</b> (raw-count rank was #10)<br>EIS score: 23,457<br>Violations: 4996<br>Dominant violation: WRONG PARKING<br>Primary vehicle: PASSENGER AUTO<br>Nearest junction: BTP211 - Central Street Junction</div>`)[0];
+                popup_fd20ac768db221a98ab2d87b84f8f494.setContent(html_fb3c9bd781d705d60adbab774d04c611);
+            
+        
+
+        circle_marker_b135e4233b97eacd261c971087430187.bindPopup(popup_fd20ac768db221a98ab2d87b84f8f494)
+        ;
+
+        
+    
+    
+            var circle_marker_2f865d87c7d5ae159afbbd2c6cbf5068 = L.circleMarker(
+                [12.98, 77.605],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.037756605476762, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_33be9bd9e86ce51e34d1ee68b0a61a12 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b99dcd1fe493878b7aafc2c0d315e2d9 = $(`<div id="html_b99dcd1fe493878b7aafc2c0d315e2d9" style="width: 100.0%; height: 100.0%;"><b>EIS rank #9</b> (raw-count rank was #13)<br>EIS score: 22,059<br>Violations: 4707<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP051 - Safina Plaza Junction</div>`)[0];
+                popup_33be9bd9e86ce51e34d1ee68b0a61a12.setContent(html_b99dcd1fe493878b7aafc2c0d315e2d9);
+            
+        
+
+        circle_marker_2f865d87c7d5ae159afbbd2c6cbf5068.bindPopup(popup_33be9bd9e86ce51e34d1ee68b0a61a12)
+        ;
+
+        
+    
+    
+            var circle_marker_1e84dc6d61b255e4acfb3dc1cf4f89e4 = L.circleMarker(
+                [12.965, 77.58],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.636207107296986, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_0bbda643543ba2bbef42595a164f8316 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_16896b3bf4cdd56a1c19b7300b216c58 = $(`<div id="html_16896b3bf4cdd56a1c19b7300b216c58" style="width: 100.0%; height: 100.0%;"><b>EIS rank #10</b> (raw-count rank was #14)<br>EIS score: 20,801<br>Violations: 4145<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP082 - KR Market Junction</div>`)[0];
+                popup_0bbda643543ba2bbef42595a164f8316.setContent(html_16896b3bf4cdd56a1c19b7300b216c58);
+            
+        
+
+        circle_marker_1e84dc6d61b255e4acfb3dc1cf4f89e4.bindPopup(popup_0bbda643543ba2bbef42595a164f8316)
+        ;
+
+        
+    
+    
+            var circle_marker_cad1d103580037b18b60e3943bc93440 = L.circleMarker(
+                [12.935, 77.69],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.94977470781407, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_0b5baa6b57862f795255da2fe57108dd = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_2f7fa35deabf488b8dcf6c932c1ab03a = $(`<div id="html_2f7fa35deabf488b8dcf6c932c1ab03a" style="width: 100.0%; height: 100.0%;"><b>EIS rank #11</b> (raw-count rank was #5)<br>EIS score: 18,649<br>Violations: 7948<br>Dominant violation: NO PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: No Junction</div>`)[0];
+                popup_0b5baa6b57862f795255da2fe57108dd.setContent(html_2f7fa35deabf488b8dcf6c932c1ab03a);
+            
+        
+
+        circle_marker_cad1d103580037b18b60e3943bc93440.bindPopup(popup_0b5baa6b57862f795255da2fe57108dd)
+        ;
+
+        
+    
+    
+            var circle_marker_9819bb139f2a9c290214430cf72d8753 = L.circleMarker(
+                [12.98, 77.58],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.23270249128472, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_3685525de9e530e3227779de611cc832 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_cde99829e19bf601cf436acdf1143ff3 = $(`<div id="html_cde99829e19bf601cf436acdf1143ff3" style="width: 100.0%; height: 100.0%;"><b>EIS rank #12</b> (raw-count rank was #11)<br>EIS score: 16,401<br>Violations: 4836<br>Dominant violation: NO PARKING<br>Primary vehicle: CAR<br>Nearest junction: BTP058 - Subbanna Junction</div>`)[0];
+                popup_3685525de9e530e3227779de611cc832.setContent(html_cde99829e19bf601cf436acdf1143ff3);
+            
+        
+
+        circle_marker_9819bb139f2a9c290214430cf72d8753.bindPopup(popup_3685525de9e530e3227779de611cc832)
+        ;
+
+        
+    
+    
+            var circle_marker_ea799cc459e567bbe1dcc72042658e79 = L.circleMarker(
+                [12.97, 77.575],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.177739851881629, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_7e1dee4de27b20806f11e8b97bea8237 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9fd3fd6be3b9101209af2804f6316ae9 = $(`<div id="html_9fd3fd6be3b9101209af2804f6316ae9" style="width: 100.0%; height: 100.0%;"><b>EIS rank #13</b> (raw-count rank was #17)<br>EIS score: 16,229<br>Violations: 3717<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP043 - Upparpet Junction</div>`)[0];
+                popup_7e1dee4de27b20806f11e8b97bea8237.setContent(html_9fd3fd6be3b9101209af2804f6316ae9);
+            
+        
+
+        circle_marker_ea799cc459e567bbe1dcc72042658e79.bindPopup(popup_7e1dee4de27b20806f11e8b97bea8237)
+        ;
+
+        
+    
+    
+            var circle_marker_af21456c3146dbb68bcc7b8fad7c49df = L.circleMarker(
+                [13.185, 77.68],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.55094004179027, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_403533811cf6a04e4e1dd1878af4e529 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_2bd4e77f6e33dd63937190a99f5c6419 = $(`<div id="html_2bd4e77f6e33dd63937190a99f5c6419" style="width: 100.0%; height: 100.0%;"><b>EIS rank #14</b> (raw-count rank was #15)<br>EIS score: 14,264<br>Violations: 4063<br>Dominant violation: NO PARKING<br>Primary vehicle: CAR<br>Nearest junction: No Junction</div>`)[0];
+                popup_403533811cf6a04e4e1dd1878af4e529.setContent(html_2bd4e77f6e33dd63937190a99f5c6419);
+            
+        
+
+        circle_marker_af21456c3146dbb68bcc7b8fad7c49df.bindPopup(popup_403533811cf6a04e4e1dd1878af4e529)
+        ;
+
+        
+    
+    
+            var circle_marker_7659da759003fa8ac971e1b6742d5060 = L.circleMarker(
+                [12.965, 77.585],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.526186515250217, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_acd7065de44fdea2bd1e9150f8ff7ebe = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_20ae55a3f70876c7d5bd92a2cba9cbdb = $(`<div id="html_20ae55a3f70876c7d5bd92a2cba9cbdb" style="width: 100.0%; height: 100.0%;"><b>EIS rank #15</b> (raw-count rank was #20)<br>EIS score: 14,187<br>Violations: 3116<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP080 - NR Road, SP Road Junction</div>`)[0];
+                popup_acd7065de44fdea2bd1e9150f8ff7ebe.setContent(html_20ae55a3f70876c7d5bd92a2cba9cbdb);
+            
+        
+
+        circle_marker_7659da759003fa8ac971e1b6742d5060.bindPopup(popup_acd7065de44fdea2bd1e9150f8ff7ebe)
+        ;
+
+        
+    
+    
+            var circle_marker_787bc66dda7be553054362eee1cd6644 = L.circleMarker(
+                [13.07, 77.59],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.520991744238284, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_4f6930d103ac318ccf7952372c0dd4e5 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b3a0197742fe7d6a2c17ee48b9d3bd9e = $(`<div id="html_b3a0197742fe7d6a2c17ee48b9d3bd9e" style="width: 100.0%; height: 100.0%;"><b>EIS rank #16</b> (raw-count rank was #9)<br>EIS score: 14,171<br>Violations: 5063<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: No Junction</div>`)[0];
+                popup_4f6930d103ac318ccf7952372c0dd4e5.setContent(html_b3a0197742fe7d6a2c17ee48b9d3bd9e);
+            
+        
+
+        circle_marker_787bc66dda7be553054362eee1cd6644.bindPopup(popup_4f6930d103ac318ccf7952372c0dd4e5)
+        ;
+
+        
+    
+    
+            var circle_marker_64e7fc08d0be2c129596375e0efae8d3 = L.circleMarker(
+                [12.975, 77.545],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.150081265504603, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_9270470496997fe21078052b13574f08 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_82e468a6d39bac4e49363c93b34c9d6c = $(`<div id="html_82e468a6d39bac4e49363c93b34c9d6c" style="width: 100.0%; height: 100.0%;"><b>EIS rank #17</b> (raw-count rank was #12)<br>EIS score: 13,008<br>Violations: 4746<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP020 - Hosahalli Metro Station</div>`)[0];
+                popup_9270470496997fe21078052b13574f08.setContent(html_82e468a6d39bac4e49363c93b34c9d6c);
+            
+        
+
+        circle_marker_64e7fc08d0be2c129596375e0efae8d3.bindPopup(popup_9270470496997fe21078052b13574f08)
+        ;
+
+        
+    
+    
+            var circle_marker_fc7091361170b4b96705258918bec8e2 = L.circleMarker(
+                [12.995, 77.67],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.107172760034162, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_ed26eba7f6d14677b2733e929da8d269 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6fab1c0c0483f05e6fcf740dc0881592 = $(`<div id="html_6fab1c0c0483f05e6fcf740dc0881592" style="width: 100.0%; height: 100.0%;"><b>EIS rank #18</b> (raw-count rank was #29)<br>EIS score: 12,874<br>Violations: 1829<br>Dominant violation: WRONG PARKING<br>Primary vehicle: PASSENGER AUTO<br>Nearest junction: No Junction</div>`)[0];
+                popup_ed26eba7f6d14677b2733e929da8d269.setContent(html_6fab1c0c0483f05e6fcf740dc0881592);
+            
+        
+
+        circle_marker_fc7091361170b4b96705258918bec8e2.bindPopup(popup_ed26eba7f6d14677b2733e929da8d269)
+        ;
+
+        
+    
+    
+            var circle_marker_474f4fb2936cc3e7dce56c1072306adc = L.circleMarker(
+                [13.01, 77.695],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.76129177755804, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_ce30bc30f7901590c59c712dc7eb674b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8b93eb94ba22a7d3e669253235d36c40 = $(`<div id="html_8b93eb94ba22a7d3e669253235d36c40" style="width: 100.0%; height: 100.0%;"><b>EIS rank #19</b> (raw-count rank was #16)<br>EIS score: 11,789<br>Violations: 3903<br>Dominant violation: WRONG PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: No Junction</div>`)[0];
+                popup_ce30bc30f7901590c59c712dc7eb674b.setContent(html_8b93eb94ba22a7d3e669253235d36c40);
+            
+        
+
+        circle_marker_474f4fb2936cc3e7dce56c1072306adc.bindPopup(popup_ce30bc30f7901590c59c712dc7eb674b)
+        ;
+
+        
+    
+    
+            var circle_marker_5e64772d6aea3fdb9e28051ae0807ac0 = L.circleMarker(
+                [12.975, 77.55],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.607683523351644, "stroke": true, "weight": 1}
+            ).addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+    
+        var popup_1ff30357b1235832d9769d6d67ace61b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_afe4e2367fd821e944d9d09eb4e5d9ba = $(`<div id="html_afe4e2367fd821e944d9d09eb4e5d9ba" style="width: 100.0%; height: 100.0%;"><b>EIS rank #20</b> (raw-count rank was #18)<br>EIS score: 11,308<br>Violations: 3319<br>Dominant violation: NO PARKING<br>Primary vehicle: SCOOTER<br>Nearest junction: BTP070 - Cholurpalya Junction, Magadi Road</div>`)[0];
+                popup_1ff30357b1235832d9769d6d67ace61b.setContent(html_afe4e2367fd821e944d9d09eb4e5d9ba);
+            
+        
+
+        circle_marker_5e64772d6aea3fdb9e28051ae0807ac0.bindPopup(popup_1ff30357b1235832d9769d6d67ace61b)
+        ;
+
+        
+    
+    
+            tile_layer_e7d03d2e7bee55355ce2e8bbd6725e80.addTo(map_acf8e535397a525a844db2da1e615ae7);
+        
+</script>
+</html>

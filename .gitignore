@@ -33,3 +33,7 @@ dist/
 # Logs & temporary files
 *.log
 *.tmp
+
+backend/complete_dataset/*.csv
+backend/model_outputs/*.csv
+backend/model_outputs/**/*.csv

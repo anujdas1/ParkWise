@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         plugins: {
           tooltip: {
             callbacks: {
-              title: (ctx) => `Rank ${ctx[0].label} — ${simulatedData[ctx[0].dataIndex].zone_id}`
+              title: (ctx) => `Rank ${ctx[0].label} — ${simulatedData[ctx[0].dataIndex].zone_name || simulatedData[ctx[0].dataIndex].zone_id}`
             }
           }
         },

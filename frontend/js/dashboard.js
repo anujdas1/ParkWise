@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const risk = h.predicted_EIS > 800 ? 'danger' : h.predicted_EIS > 500 ? 'warning' : 'success';
       return `<tr>
         <td class="rank-cell">${i + 1}</td>
-        <td class="mono">${h.zone_id}</td>
+        <td class="mono">${h.zone_name || h.zone_id}</td>
         <td>${h.zone_lat}</td>
         <td>${h.zone_lon}</td>
         <td><span class="tag tag-${risk}">${h.predicted_EIS.toFixed(1)}</span></td>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
     .bindPopup(`
       <div style="font-family:Inter,sans-serif;font-size:0.8rem">
-        <strong style="color:${color}">#${i+1} — ${h.zone_id}</strong><br>
+        <strong style="color:${color}">#${i+1} — ${h.zone_name || h.zone_id}</strong><br>
         <span style="color:#94a3b8">Predicted EIS:</span> <strong>${h.predicted_EIS.toFixed(1)}</strong><br>
         <span style="color:#94a3b8">Lat:</span> ${h.zone_lat} &nbsp; <span style="color:#94a3b8">Lon:</span> ${h.zone_lon}
       </div>

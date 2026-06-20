@@ -7,11 +7,19 @@
   <meta name="description" content="Visualize all traffic violation hotspots on an interactive map.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-</head>
+<script src="js/theme.js"></script>`r`n</head>
 <body>
   <div class="page-header">
     <h1>Hotspot Map</h1>
     <p class="subtitle">All forecast zones plotted by predicted Enforcement Impact Score (EIS).</p>
+  </div>
+
+  <div class="info-alert fade-in" style="background: rgba(6, 182, 212, 0.05); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; border-radius: var(--radius-sm); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: flex-start; border: 1px solid var(--border-accent); border-left-width: 4px;">
+    <svg style="width: 1.5rem; height: 1.5rem; color: var(--accent); flex-shrink: 0; margin-top: 2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <div>
+      <h4 style="margin-bottom: 0.25rem; font-size: 0.95rem; color: var(--text-primary); font-weight: 600;">How to read the map</h4>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">The map displays clusters of historical traffic violations. Larger, red circles indicate a higher frequency and severity of violations. Clicking on a cluster will reveal specific details such as the primary vehicle type and the dominant violation recorded there.</p>
+    </div>
   </div>
 
   <div class="controls-bar">

@@ -1,0 +1,10 @@
+{
+  "occurrence_auc": 0.8854,
+  "hurdle_model_mae": 1.995,
+  "hurdle_model_rmse": 8.594,
+  "naive_same_hour_last_week_mae": 2.274,
+  "naive_same_hour_last_week_rmse": 11.718,
+  "naive_zone_mean_mae": 2.637,
+  "mae_improvement_vs_naive_pct": 12.2,
+  "rmse_improvement_vs_naive_pct": 26.7
+}

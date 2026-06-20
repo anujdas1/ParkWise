@@ -150,18 +150,34 @@ def hotspots_endpoint():
 
 @app.route('/stats', methods=['GET'])
 def stats_endpoint():
-    """Return basic statistics about the violations collection."""
-    collection = get_collection()
-    total = collection.count_documents({})
+    """Return basic statistics. Uses congestion_zone_summary as source of truth
+    since it is always populated from model outputs, even before raw violations
+    are imported."""
+    from backend.db import get_collection_by_name
 
-    # Count distinct locations and vehicle types
-    locations = collection.distinct("junction_name")
-    vehicle_types = collection.distinct("vehicle_type")
-    violation_types = collection.distinct("violation_type")
+    # Try raw violations collection first
+    violations = get_collection()
+    total = violations.count_documents({})
+    locations = violations.distinct("junction_name")
+    vehicle_types = violations.distinct("vehicle_type")
+    violation_types = violations.distinct("violation_type")
+
+    # If violations collection is empty, fall back to aggregated zone summary
+    if total == 0:
+        zone_coll = get_collection_by_name("congestion_zone_summary")
+        total_pipeline = [{"$group": {"_id": None, "total": {"$sum": "$violation_count"}}}]
+        total_result = list(zone_coll.aggregate(total_pipeline))
+        total = int(total_result[0]["total"]) if total_result else 0
+
+        unique_locations = zone_coll.count_documents({})
+        vehicle_types = list(zone_coll.distinct("primary_vehicle_type"))
+        violation_types = list(zone_coll.distinct("dominant_violation_type"))
+    else:
+        unique_locations = len(locations)
 
     return jsonify({
         "total_records": total,
-        "unique_locations": len(locations),
+        "unique_locations": unique_locations,
         "vehicle_types": vehicle_types,
         "violation_types": violation_types,
     })

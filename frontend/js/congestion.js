@@ -1,58 +1,57 @@
 // congestion.js – Handles Congestion model UI interactions
 
-// Ensure the DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
-  // Initialize sidebar navigation (existing helper)
   initSidebar('congestion');
 
-  // Load and inject the heatmap HTML
+  // ── 1. Congestion Heatmap ──────────────────────────────────────────────
   try {
     const heatmapHTML = await api.getCongestionHeatmap();
     const heatmapContainer = document.getElementById('heatmapContainer');
     if (heatmapContainer) {
-      heatmapContainer.innerHTML = heatmapHTML;
+      if (heatmapHTML && heatmapHTML.trim().length > 0) {
+        // FIX: inject HTML into an iframe so scripts/styles inside it work correctly
+        const iframe = document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = '600px';
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = '8px';
+        heatmapContainer.appendChild(iframe);
+        // Write the full HTML document into the iframe
+        iframe.contentDocument.open();
+        iframe.contentDocument.write(heatmapHTML);
+        iframe.contentDocument.close();
+      } else {
+        heatmapContainer.innerHTML = '<p style="color:var(--text-muted);padding:1rem">No heatmap data available.</p>';
+      }
     }
   } catch (e) {
     console.error('Failed to load congestion heatmap:', e);
   }
 
-  // Load zone summary JSON and populate the table
-  try {
-    const resp = await api.getCongestionZoneSummary();
-    // The API returns { zone_summary: [...] }
-    const data = resp.zone_summary || [];
-    const tbody = document.querySelector('#zoneSummaryTable tbody');
-    if (tbody) {
-      tbody.innerHTML = '';
-      data.forEach(zone => {
-        const tr = document.createElement('tr');
-        const tdId = document.createElement('td');
-        tdId.textContent = zone.zone_id ?? zone.zoneId ?? '';
-        const tdEIS = document.createElement('td');
-        tdEIS.textContent = zone.predicted_EIS ?? zone.EIS ?? '';
-        const tdInfo = document.createElement('td');
-        // Include any additional fields (e.g., latitude/longitude)
-        const extra = [];
-        if (zone.zone_lat) extra.push(`Lat: ${zone.zone_lat}`);
-        if (zone.zone_lon) extra.push(`Lon: ${zone.zone_lon}`);
-        tdInfo.textContent = extra.join(' | ');
-        tr.appendChild(tdId);
-        tr.appendChild(tdEIS);
-        tr.appendChild(tdInfo);
-        tbody.appendChild(tr);
-      });
-    }
-  } catch (e) {
-    console.error('Failed to load congestion zone summary:', e);
-  }
-  // Load top 20 congestion hotspots HTML
+
+
+  // ── 3. Top 20 Congestion Hotspots HTML ────────────────────────────────
   try {
     const hotspotsHTML = await api.getCongestionTopHotspots();
     const hotspotsContainer = document.getElementById('topHotspotsContainer');
     if (hotspotsContainer) {
-      hotspotsContainer.innerHTML = hotspotsHTML;
+      if (hotspotsHTML && hotspotsHTML.trim().length > 0) {
+        // FIX: also use iframe here so embedded styles/scripts render properly
+        const iframe = document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = '600px';
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = '8px';
+        hotspotsContainer.appendChild(iframe);
+        iframe.contentDocument.open();
+        iframe.contentDocument.write(hotspotsHTML);
+        iframe.contentDocument.close();
+      } else {
+        hotspotsContainer.innerHTML = '<p style="color:var(--text-muted);padding:1rem">No hotspot data available.</p>';
+      }
     }
   } catch (e) {
     console.error('Failed to load congestion top hotspots:', e);
   }
+
 }); // end of DOMContentLoaded

@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       })
       .bindPopup(`
         <div style="font-family:Inter,sans-serif;font-size:0.8rem">
-          <strong style="color:${color}">Zone: ${d.zone_id}</strong><br>
+          <strong style="color:${color}">Zone: ${d.zone_name || d.zone_id}</strong><br>
           <span style="color:#94a3b8">${valueLabel}:</span> <strong>${value}</strong><br>
           <span style="color:#94a3b8">Lat:</span> ${d.zone_lat} &nbsp; <span style="color:#94a3b8">Lon:</span> ${d.zone_lon}
         </div>

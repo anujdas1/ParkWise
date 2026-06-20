@@ -8,6 +8,18 @@ from .db import get_collection_by_name
 
 model_bp = Blueprint("model", __name__)
 
+_ZONE_MAP_CACHE = None
+
+def _get_zone_map():
+    global _ZONE_MAP_CACHE
+    if _ZONE_MAP_CACHE is None:
+        try:
+            coll = get_collection_by_name("zone_lookup")
+            _ZONE_MAP_CACHE = {str(d.get("zone_id")): d.get("zone_name") for d in coll.find({})}
+        except Exception:
+            _ZONE_MAP_CACHE = {}
+    return _ZONE_MAP_CACHE
+
 # Utility to fetch documents from a collection
 def _fetch_from_collection(name: str, filter_query: dict = None, limit: int = 0):
     coll = get_collection_by_name(name)
@@ -18,6 +30,14 @@ def _fetch_from_collection(name: str, filter_query: dict = None, limit: int = 0)
     for doc in cursor:
         doc['_id'] = str(doc.get('_id'))
         results.append(doc)
+        
+    zone_map = _get_zone_map()
+    for doc in results:
+        if "zone_id" in doc:
+            zid = str(doc["zone_id"])
+            if zid in zone_map:
+                doc["zone_name"] = zone_map[zid]
+
     return results
 
 # ─────────────────────── Forecast ───────────────────────
@@ -54,7 +74,7 @@ def top_hotspots():
 # ─────────────────────── Patrol priority ───────────────────────
 @model_bp.route("/patrol-priority", methods=["GET"]) 
 def patrol_priority():
-    """Return patrol priority rankings broken down by shift.
+    """Return patrol priority rankings broken down by shift, sorted by predicted_EIS descending.
     Query params:
     - shift: filter by shift name (case‑insensitive substring)
     - date: filter by shift_date
@@ -68,10 +88,39 @@ def patrol_priority():
     if date:
         filter_query["shift_date"] = date
     limit = request.args.get("limit", 200, type=int)
-    data = _fetch_from_collection("patrol_priority", filter_query, limit)
+
+    coll = get_collection_by_name("patrol_priority")
+    cursor = coll.find(filter_query or {})
+    if limit:
+        cursor = cursor.limit(limit)
+    raw = []
+    for doc in cursor:
+        doc['_id'] = str(doc.get('_id'))
+        raw.append(doc)
+
+    # FIX: Sort by predicted_EIS descending within each shift group
+    # so highest-risk zones always appear first regardless of MongoDB insertion order
+    from collections import defaultdict
+    shift_groups = defaultdict(list)
+    for doc in raw:
+        shift_groups[doc.get("shift", "")].append(doc)
+
+    sorted_data = []
+    for shift_name in sorted(shift_groups.keys()):          # alphabetical shift order
+        group = shift_groups[shift_name]
+        group.sort(key=lambda d: d.get("predicted_EIS", 0), reverse=True)  # highest EIS first
+        sorted_data.extend(group)
+
+    zone_map = _get_zone_map()
+    for doc in sorted_data:
+        if "zone_id" in doc:
+            zid = str(doc["zone_id"])
+            if zid in zone_map:
+                doc["zone_name"] = zone_map[zid]
+
     return jsonify({
-        "patrol_priority": data,
-        "total": len(data),
+        "patrol_priority": sorted_data,
+        "total": len(sorted_data),
         "description": "Zone patrol priority ranked by predicted EIS per shift",
     })
 
@@ -79,12 +128,14 @@ def patrol_priority():
 @model_bp.route("/model-report", methods=["GET"]) 
 def model_report():
     """Return model evaluation metrics."""
-    coll = get_collection_by_name("model_evaluation")
+    coll = get_collection_by_name("model_report")  # FIX: was "model_evaluation"
     doc = coll.find_one({})
-    if doc:
-        doc['_id'] = str(doc.get('_id'))
+    # FIX: data is stored nested inside a "content" key by load_model_data.py
+    evaluation = doc.get("content", doc) if doc else {}
+    if isinstance(evaluation, dict):
+        evaluation.pop("_id", None)
     return jsonify({
-        "model_evaluation": doc,
+        "model_evaluation": evaluation,
         "description": "Hurdle model performance vs. naive baseline",
     })
 
@@ -94,7 +145,7 @@ def congestion_heatmap():
     """Return the EIS heatmap HTML for congestion model."""
     coll = get_collection_by_name("congestion_heatmap")
     doc = coll.find_one({})
-    html_content = doc.get("html", "") if doc else ""
+    html_content = doc.get("content", doc.get("html", "")) if doc else ""  # FIX: was "html" only
     return current_app.response_class(html_content, mimetype="text/html")
 
 @model_bp.route("/congestion/zone-summary", methods=["GET"]) 
@@ -111,5 +162,5 @@ def congestion_top_hotspots():
     """Return top 20 hotspots detailed HTML for congestion model."""
     coll = get_collection_by_name("congestion_top_hotspots")
     doc = coll.find_one({})
-    html_content = doc.get("html", "") if doc else ""
+    html_content = doc.get("content", doc.get("html", "")) if doc else ""  # FIX: was "html" only
     return current_app.response_class(html_content, mimetype="text/html")
