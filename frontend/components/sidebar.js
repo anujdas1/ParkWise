@@ -5,18 +5,12 @@
 const SIDEBAR_HTML = `
 <aside class="sidebar">
   <a href="index.html" class="sidebar-brand" style="text-decoration: none; color: inherit; display: block;">
-    <span class="brand-sub">Impact Matrix</span>
-    <div class="brand-name">Park<span>Wise</span></div>
+    <span class="brand-sub">Traffic Operations</span>
+    <div class="brand-name">DarogaDesk</div>
   </a>
   <ul class="sidebar-nav">
     <li>
-      <a href="index.html">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.592 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
-        Home
-      </a>
-    </li>
-    <li>
-      <a href="dashboard.html" data-page="dashboard">
+      <a href="index.html" data-page="dashboard">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
         Dashboard
       </a>
@@ -83,7 +77,7 @@ function initSidebar(activePage) {
       '<button id="mobileMenuBtn" class="mobile-menu-btn">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>' +
       '</button>' +
-      '<div class="brand-name" style="font-weight:800; font-size:1.25rem;">Park<span style="color:var(--accent)">Wise</span></div>' +
+      '<div class="brand-name" style="font-weight:800; font-size:1.25rem;">DarogaDesk</div>' +
       '<div style="width: 40px;"></div><!-- Spacer for centering -->' +
     '</div>'
   );
