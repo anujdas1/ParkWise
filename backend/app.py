@@ -23,7 +23,7 @@ app.register_blueprint(model_bp)
 @app.route("/")
 def serve_index():
     """Serve the main frontend dashboard."""
-    return send_from_directory(app.static_folder, "index.html")
+    return send_from_directory(app.static_folder, "dashboard.html")
 
 @app.route("/<path:path>")
 def serve_static(path):

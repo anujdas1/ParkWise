@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // 3. Top 30 High-Risk Zones Bar Chart
-    const top30 = topZones.slice(0, 30);
+    const top30 = topZones.slice(0, 20);
     new Chart(document.getElementById('topZonesChart'), {
       type: 'bar',
       data: {

@@ -128,13 +128,14 @@ def enforcement_quality():
     """Return enforcement quality scores grouped by zone."""
     try:
         coll = get_collection_by_name("enforcement_quality")
-        data = list(coll.find({}, {"_id": 0}))
+        data = list(coll.find({}, {"_id": 0, "zone_name": 1, "total_violations": 1, "rejection_rate": 1, "quality_score": 1, "action": 1}))
         if data:
+            # Sort by total_eis descending for consistency
             data.sort(key=lambda x: x.get("rejection_rate", 0), reverse=True)
             return jsonify({"data": data})
     except Exception as e:
         print(f"Error fetching enforcement_quality: {e}")
-        
+
     return jsonify({"data": []})
 
 # ── Model evaluation ──

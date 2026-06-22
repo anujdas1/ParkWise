@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Fetch data from our new endpoint
     const response = await api.getEnforcementQuality();
-    
+
     if (!response.data || response.data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="5" class="loading">No quality data available.</td></tr>';
       return;
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     response.data.forEach(zone => {
       const isHighRisk = zone.rejection_rate >= 30.0;
       const isMediumRisk = zone.rejection_rate >= 20.0 && zone.rejection_rate < 30.0;
-      
+
       let colorCode = '#10b981'; // Green
       let bgCode = 'rgba(16, 185, 129, 0.1)';
       if (isHighRisk) {
@@ -29,10 +29,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         colorCode = '#f59e0b'; // Amber/Yellow
         bgCode = 'rgba(245, 158, 11, 0.1)';
       }
-      
+
+      const qualityScore = zone.quality_score !== undefined ? zone.quality_score : 0;
+      const actionText = zone.action !== undefined ? zone.action : 'N/A';
       const tr = document.createElement('tr');
       tr.style.animation = 'fadeInUp 0.3s ease-out both';
-      
+
       tr.innerHTML = `
         <td style="font-weight: 600;">${zone.zone_name}</td>
         <td>${zone.total_violations}</td>
@@ -57,6 +59,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       tbody.appendChild(tr);
     });
+
+
   } catch (error) {
     console.error('Failed to load quality metrics:', error);
     tbody.innerHTML = '<tr><td colspan="5" style="color:#ef4444; padding:1rem;">Error loading data.</td></tr>';

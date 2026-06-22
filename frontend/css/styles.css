@@ -23,9 +23,9 @@
   --sidebar-border: rgba(255, 255, 255, 0.08);
   --sidebar-theme-bg: #16181A;
 
-  --accent:       #5e6ad2; /* Linear Purple/Blue */
-  --accent-glow:  rgba(94, 106, 210, 0.15);
-  --accent-hover: rgba(94, 106, 210, 0.25);
+  --accent:       #6b7280;
+  --accent-glow:  rgba(107,115,128,0.15);
+  --accent-hover: rgba(107,115,128,0.25);
 
   --danger:  #e5484d;
   --warning: #ffb224;
@@ -35,7 +35,7 @@
   --radius-sm:  4px;
   --radius-lg:  8px;
 
-  --sidebar-width: 240px;
+  --sidebar-width: 260px;
 
   --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.25);
   --shadow-glow: 0 0 20px rgba(94, 106, 210, 0.2);
@@ -46,7 +46,7 @@
   --bg-body:      #ffffff;
   --bg-surface:   #fcfcfc;
   --bg-surface-2: #f4f4f5;
-  --bg-sidebar:   #fcfcfc;
+  --bg-sidebar:   #e0e0e0;
   --border-color: rgba(0, 0, 0, 0.08);
   --border-accent: rgba(94, 106, 210, 0.3);
 
@@ -55,14 +55,14 @@
   --text-muted:     #9ca3af;
 
   /* Sidebar Specific */
-  --sidebar-text-primary: #111111;
-  --sidebar-text-secondary: #6b7280;
+  --sidebar-text-primary: #000000;
+  --sidebar-text-secondary: #000000;
   --sidebar-border: rgba(0, 0, 0, 0.08);
   --sidebar-theme-bg: #f4f4f5;
 
-  --accent:       #5e6ad2; 
-  --accent-glow:  rgba(94, 106, 210, 0.15);
-  --accent-hover: rgba(94, 106, 210, 0.25);
+  --accent:       #6b7280;
+  --accent-glow:  rgba(107,115,128,0.15);
+  --accent-hover: rgba(107,115,128,0.25);
 
   --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.03);
   --shadow-glow: 0 0 20px rgba(94, 106, 210, 0.15);
@@ -73,7 +73,7 @@
   --bg-body:      #f8fafc; /* Crisp White/Light Gray */
   --bg-surface:   #ffffff; /* Cards */
   --bg-surface-2: #f1f5f9;
-  --bg-sidebar:   #0f172a; /* Deep Navy Blue Sidebar */
+  --bg-sidebar:   #e0e0e0; /* light gray */
   --border-color: rgba(15, 23, 42, 0.1);
   --border-accent: rgba(13, 148, 136, 0.3);
 
@@ -82,8 +82,8 @@
   --text-muted:     #94a3b8;
 
   /* Sidebar Specific (Light Theme - since sidebar is dark navy) */
-  --sidebar-text-primary: #ffffff;
-  --sidebar-text-secondary: #94a3b8;
+  --sidebar-text-primary: #000000;
+  --sidebar-text-secondary: #000000;
   --sidebar-border: rgba(255, 255, 255, 0.1);
   --sidebar-theme-bg: #1e293b;
 
@@ -95,7 +95,43 @@
   --shadow-glow: 0 0 20px rgba(13, 148, 136, 0.15);
 }
 
-/* ---- Reset ---- */
+/* Loading spinner */
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+
+/* Skeleton loading placeholders */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-surface-2);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: skeleton-loading 1.5s infinite;
+}
+@keyframes skeleton-loading {
+  to { left: 100%; }
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -400,16 +436,18 @@ a:hover { color: #22d3ee; }
 
 /* ---- Card ---- */
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%), var(--bg-surface);
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   overflow: hidden;
   transition: all 0.2s ease;
   box-shadow: var(--shadow-card);
+  margin-bottom: 1.5rem;
 }
 
 .card:hover {
   border-color: var(--border-accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .card-header {
@@ -510,8 +548,76 @@ a:hover { color: #22d3ee; }
 .tag-warning::before { background: var(--warning); box-shadow: 0 0 8px var(--warning); }
 .tag-success::before { background: var(--success); box-shadow: 0 0 8px var(--success); }
 
-/* ---- Map Container ---- */
+/* ---- Info Banner (contextual page description) ---- */
+.info-banner {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  border-radius: var(--radius);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+}
+.info-banner .info-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+.info-banner h4 {
+  margin: 0 0 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+.info-banner p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Chart canvas styling */
+.chart-canvas {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+}
+
 .map-container {
+  width: 100%;
+  height: 350px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-surface-2);
+}
+
+  margin: 0 auto;
+}
+  width: 100%;
+  height: 350px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-surface-2);
+}
+
+.map-container.full-height {
+  height: calc(100vh - 300px);
+}
+
+/* Adjust map sizes for specific pages */
+#hotspotsMap {
+  height: 350px !important;
+}
+#heatmapContainer {
+  height: 350px;
+}
+
   width: 100%;
   height: 450px;
   border-radius: var(--radius);
@@ -756,7 +862,33 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* ---- Global Buttons & Hover Effects ---- */
-button, .btn, .btn-primary {
+.btn, .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  background: rgba(var(--accent-rgb), 0.15);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  box-shadow: var(--shadow-glow);
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+
+.btn:hover, .btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.1);
+}
+
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
