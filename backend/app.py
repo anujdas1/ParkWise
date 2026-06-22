@@ -13,7 +13,7 @@ FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 # Initialize Flask with static folder pointing to the frontend
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
 # Enable CORS for the Netlify frontend only
-CORS(app, origins=["https://parkwise1.netlify.app"])
+CORS(app, origins=["https://darogadesk.netlify.app"])
 
 # Register the model-output blueprint
 app.register_blueprint(model_bp)
