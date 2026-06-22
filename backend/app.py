@@ -42,7 +42,7 @@ def page_not_found(e):
 def api_index():
     """Root health-check endpoint."""
     return jsonify({
-        "service": "ParkWise Impact Matrix API",
+        "service": "DarogaDesk Impact Matrix API",
         "status": "running",
         "endpoints": [
             "/", "/cri", "/ips", "/eis", "/hotspots", "/stats",

@@ -1,5 +1,5 @@
 /**
- * ParkWise Theme Switcher
+ * DarogaDesk Theme Switcher
  * Handles switching between Corporate Trust Dark and Light modes.
  */
 

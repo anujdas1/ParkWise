@@ -1,5 +1,5 @@
 /**
- * ParkWise — Dashboard Page Logic
+ * DarogaDesk — Dashboard Page Logic
  */
 document.addEventListener('DOMContentLoaded', async () => {
   initSidebar('dashboard');

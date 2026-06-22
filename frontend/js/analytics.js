@@ -1,5 +1,5 @@
 /**
- * ParkWise — Analytics Charts
+ * DarogaDesk — Analytics Charts
  */
 document.addEventListener('DOMContentLoaded', async () => {
   initSidebar('analytics');

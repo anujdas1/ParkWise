@@ -1,5 +1,5 @@
 /**
- * ParkWise — Hotspots Map Logic
+ * DarogaDesk — Hotspots Map Logic
  */
 document.addEventListener('DOMContentLoaded', async () => {
   initSidebar('hotspots');

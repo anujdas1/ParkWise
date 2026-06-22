@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: parkwise
+    name: darogadesk
     env: python
     buildCommand: "cd backend && pip install -r requirements.txt"
     startCommand: "cd backend && gunicorn app:app"

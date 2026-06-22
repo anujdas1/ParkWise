@@ -1,5 +1,5 @@
 /**
- * ParkWise — Simulator Logic
+ * DarogaDesk — Simulator Logic
  */
 document.addEventListener('DOMContentLoaded', async () => {
   initSidebar('simulator');

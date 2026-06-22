@@ -1,5 +1,5 @@
 /**
- * ParkWise — Priorities Table Logic
+ * DarogaDesk — Priorities Table Logic
  */
 document.addEventListener('DOMContentLoaded', async () => {
   initSidebar('priorities');

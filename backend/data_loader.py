@@ -1,5 +1,5 @@
 """
-ParkWise Data Loader
+DarogaDesk Data Loader
 ====================
 Bulk-import violation records from a CSV file into the MongoDB 'violations'
 collection.  Supports:
@@ -166,7 +166,7 @@ def load_csv(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Import violation CSV data into ParkWise MongoDB.",
+        description="Import violation CSV data into DarogaDesk MongoDB.",
     )
     parser.add_argument("csv_file", help="Path to the CSV file to import")
     parser.add_argument(
@@ -180,7 +180,7 @@ def main():
     args = parser.parse_args()
 
     mode = "DRY RUN" if args.dry_run else "LIVE"
-    print(f"\n🚀 ParkWise Data Loader [{mode}]")
+    print(f"\n🚀 DarogaDesk Data Loader [{mode}]")
     print(f"   File : {args.csv_file}")
     print(f"   Batch: {args.batch_size}\n")
 

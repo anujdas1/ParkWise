@@ -1,5 +1,5 @@
 /**
- * ParkWise — Forecast Chart Logic
+ * DarogaDesk — Forecast Chart Logic
  */
 document.addEventListener('DOMContentLoaded', async () => {
   initSidebar('forecast');

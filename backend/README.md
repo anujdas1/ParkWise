@@ -1,6 +1,6 @@
-# ParkWise Backend ⚙️
+# DarogaDesk Backend ⚙️
 
-This directory contains the Python Flask backend for the ParkWise application. It is responsible for directly connecting to MongoDB Atlas, parsing machine-learning output models, and serving the JSON payloads natively to the pure HTML/JS frontend.
+This directory contains the Python Flask backend for the DarogaDesk application. It is responsible for directly connecting to MongoDB Atlas, parsing machine-learning output models, and serving the JSON payloads natively to the pure HTML/JS frontend.
 
 ## Prerequisites
 - **Python 3.12** or newer installed.
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 
 ## Running the API
-The easiest way to run the platform is from the root `ParkWise` directory:
+The easiest way to run the platform is from the root `DarogaDesk` directory:
 ```powershell
 # Start the Flask server module
 python -m backend.app

@@ -1,5 +1,5 @@
 /**
- * ParkWise — API Helper
+ * DarogaDesk — API Helper
  * All fetch calls to the Flask backend go through here.
  */
 

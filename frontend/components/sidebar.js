@@ -1,5 +1,5 @@
 /**
- * ParkWise — Sidebar Component (injected into every page)
+ * DarogaDesk — Sidebar Component (injected into every page)
  */
 
 const SIDEBAR_HTML = `
